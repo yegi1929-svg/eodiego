@@ -30,9 +30,9 @@ export default function Home() {
       <button className="logo" onClick={() => setTab("planner")} aria-label="어디GO 홈"><img src="/eodiego-logo.png" alt="어디GO!" /></button>
       <div className="header-actions"><span className="jeju-pill"><i /> 제주 실시간</span>{member ? <button className="profile-chip" onClick={() => setTab("mypage")}>예지님</button> : <button className="login-link" onClick={() => setDialog("login")}>로그인</button>}</div>
     </header>
-    <section className="welcome-band">
+    <section className={tab === "planner" ? "welcome-band planner-hero" : "welcome-band"}>
       <div><p className="eyebrow">SMART JEJU TRIP</p><h1>오늘 제주, <strong>어디GO?</strong></h1><p>취향에 맞는 동선부터 지금 한적한 장소까지<br />여행의 망설임을 가볍게 덜어드릴게요.</p></div>
-      <div className="guide-orb" aria-label="여행 가이드"><span>🗺️</span><i>✦</i></div>
+      {tab === "planner" ? <div className="tangerine-float" aria-hidden="true"><img src="/planner-tangerine.png" alt="" /></div> : <div className="guide-orb" aria-label="여행 가이드"><span>🗺️</span><i>✦</i></div>}
     </section>
     <section className="content-area">
       {tab === "planner" && <Planner region={region} setRegion={setRegion} budget={budget} setBudget={setBudget} generated={generated} setGenerated={setGenerated} saved={saved} member={member} onSave={() => member ? setSaved(!saved) : setDialog("login")} />}
