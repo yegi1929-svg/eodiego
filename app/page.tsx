@@ -32,7 +32,7 @@ export default function Home() {
       </header>
       <section className={`welcome-band ${tab}-hero`}>
         <div className={tab === "planner" ? "hero-copy" : "sub-hero-copy"}>{tab === "planner" ? <><p className="eyebrow">JEJU TRIP EDITION</p><h1>오늘 제주,<br /><strong>어디GO?</strong></h1><p>취향에 맞는 동선부터 지금 한적한 장소까지<br />여행의 망설임을 가볍게 덜어드릴게요.</p><span className="hero-sticker">슝! 코스 생성</span></> : tab === "realtime" ? <><p className="eyebrow">JEJU PICKS</p><h1>지금 제주에서<br /><strong>가볼 곳</strong></h1><p>오늘의 제주를 더 즐겁게 만드는<br />추천 장소를 한눈에 모아봤어요.</p></> : <><p className="eyebrow">MY TRAVEL</p><h1>나만의 제주<br /><strong>여행 기록</strong></h1><p>저장한 코스와 다녀온 장소를<br />이곳에서 차곡차곡 모아보세요.</p></>}</div>
-        {tab === "planner" ? <div className="tangerine-float" aria-hidden="true"><img src="/planner-tangerine.png" alt="" /></div> : tab === "realtime" ? <div className="picks-tangerine" aria-hidden="true"><img src="/jeju-picks-tangerine.png" alt="" /></div> : <div className="guide-orb" aria-label="여행 가이드"><span>🗺️</span><i>✦</i></div>}
+        {tab === "planner" ? <div className="tangerine-float" aria-hidden="true"><img src="/planner-tangerine.png" alt="" /></div> : tab === "realtime" ? <div className="picks-tangerine" aria-hidden="true"><img src="/jeju-picks-tangerine.png" alt="" /></div> : <div className="mypage-tangerine" aria-hidden="true"><img src="/mypage-tangerine.png" alt="" /></div>}
       </section>
     </div>
     <section className="content-area">

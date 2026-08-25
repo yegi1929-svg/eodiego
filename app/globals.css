@@ -271,5 +271,9 @@ button{cursor:pointer}
 /* 제주 추천 전용 귤 가이드 */
 .picks-tangerine{position:absolute;right:22px;bottom:8px;z-index:2;width:126px;filter:drop-shadow(4px 6px 0 #2e6b3a);animation:tangerine-bounce 2.7s ease-in-out infinite}
 .picks-tangerine img{display:block;width:100%;height:auto;animation:tangerine-wiggle 3.6s ease-in-out infinite}
+.mypage-tangerine{position:absolute;right:16px;bottom:2px;z-index:2;width:147px;filter:drop-shadow(4px 6px 0 #2e6b3a);animation:tangerine-bounce 3s ease-in-out infinite}
+.mypage-tangerine img{display:block;width:100%;height:auto;animation:tangerine-wiggle 4.2s ease-in-out infinite}
 @media(max-width:520px){.picks-tangerine{right:8px;bottom:13px;width:112px}}
+@media(max-width:520px){.mypage-tangerine{right:-4px;bottom:11px;width:130px}}
 @media(prefers-reduced-motion:reduce){.picks-tangerine,.picks-tangerine img{animation:none}}
+@media(prefers-reduced-motion:reduce){.mypage-tangerine,.mypage-tangerine img{animation:none}}
