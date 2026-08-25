@@ -213,3 +213,33 @@ button{cursor:pointer}
 .section-head .eyebrow{color:#3f9a48}
 .tab.active span{color:#3f9a48}
 .login-pill,.profile-chip{background:#3f9a48}
+
+/* 모든 탭과 생성 결과에 귤 오렌지·제주 초록 테마 적용 */
+.planner-hero{min-height:298px;overflow:hidden}
+.planner-hero:after{z-index:0}
+.tangerine-float{bottom:-8px}
+.content-area{position:relative;z-index:3}
+.result-section{padding:20px 15px 16px;border:3px solid #2e6b3a;border-radius:21px;background:#eaf5df;box-shadow:7px 7px 0 #3f9a48}
+.result-title h2{color:#2e6b3a}
+.result-title p:not(.eyebrow){color:#57714f}
+.save-button{border:2px solid #2e6b3a;border-radius:999px;background:#fff;color:#2e6b3a;box-shadow:2px 2px 0 #2e6b3a;font-weight:900}
+.save-button.saved{background:#dff4ce}
+.day-card{border:2px solid #83b876;background:#fffdf5;box-shadow:3px 3px 0 #b8d69b}
+.day-card h3{color:#3f9a48}
+.route-item:not(:last-child):after{background:#8ec480}
+.route-item>span{color:#ff8a1e}
+.open-recommend{border:3px solid #2e6b3a;background:linear-gradient(135deg,#fff9d6,#eaf5df);box-shadow:6px 6px 0 #3f9a48}
+.open-recommend h3{color:#2e6b3a}
+.quiet-place{border-top-color:#9ecf90}
+.quiet-place>div{background:#dff4ce;border:2px solid #3f9a48}
+.quiet-place button{background:#3f9a48;border:2px solid #2e6b3a;box-shadow:2px 2px 0 #2e6b3a}
+.recommend-card{border:2px solid #2e6b3a;background:#fffdf5;box-shadow:4px 4px 0 #b7d89b}
+.recommend-card:nth-child(2){background:#eaf5df}.recommend-card:nth-child(3){background:#fff1c8}
+.card-kicker{color:#3f9a48!important}.card-kicker span{background:#3f9a48}
+.lock-layer{background:#fffdebd9;color:#2e6b3a}
+.guest-profile,.member-profile,.expanded-list{border:3px solid #2e6b3a;background:#fffdf5;box-shadow:6px 6px 0 #b8d69b}
+.member-avatar{background:#3f9a48;border:2px solid #2e6b3a}.empty-avatar{background:#dff4ce;border:2px solid #3f9a48}
+.stat-card{border:2px solid #2e6b3a;background:#fffdf5;box-shadow:3px 3px 0 #c3dfaa}.stat-card.open{border-color:#3f9a48;background:#eaf5df}
+.stat-card strong{color:#3f9a48}.list-row{background:#eaf5df;border:2px solid #9ecc90}.list-row>span{background:#dff4ce;color:#2e6b3a}
+.menu-card{border:3px solid #2e6b3a;box-shadow:6px 6px 0 #b8d69b}.menu-card button{background:#fffdf5}.menu-card button:hover{background:#eaf5df}
+@media(max-width:520px){.planner-hero{min-height:290px}.tangerine-float{bottom:-5px}.result-section{padding:18px 12px 14px}}
