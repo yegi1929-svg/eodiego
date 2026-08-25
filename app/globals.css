@@ -243,3 +243,15 @@ button{cursor:pointer}
 .stat-card strong{color:#3f9a48}.list-row{background:#eaf5df;border:2px solid #9ecc90}.list-row>span{background:#dff4ce;color:#2e6b3a}
 .menu-card{border:3px solid #2e6b3a;box-shadow:6px 6px 0 #b8d69b}.menu-card button{background:#fffdf5}.menu-card button:hover{background:#eaf5df}
 @media(max-width:520px){.planner-hero{min-height:290px}.tangerine-float{bottom:-5px}.result-section{padding:18px 12px 14px}}
+
+/* 제주 추천 · 마이페이지도 같은 귤·초록 세계관으로 연결 */
+.realtime-hero,.mypage-hero{min-height:252px;padding-top:30px;padding-bottom:30px;overflow:hidden;border-bottom:5px solid #3f9a48;background:linear-gradient(132deg,#fff8cf 0%,#ffe89a 50%,#f7c978 100%)}
+.realtime-hero:after,.mypage-hero:after{background:#cceab7;opacity:.7;z-index:0}
+.realtime-hero:before,.mypage-hero:before{content:"";position:absolute;left:-25px;bottom:24px;width:135px;height:48px;border:5px solid #3f9a48;border-radius:50%;transform:rotate(-13deg);z-index:0}
+.mypage-hero{background:linear-gradient(132deg,#eef8d9 0%,#fff0ad 52%,#ffd281 100%)}
+.sub-hero-copy{position:relative;z-index:2}
+.sub-hero-copy .eyebrow{display:inline-block;margin:0 0 11px;padding:6px 9px;border:2px solid #2e6b3a;border-radius:5px;background:#3f9a48;color:#fff;box-shadow:3px 3px 0 #2e6b3a;font-size:9px;font-weight:900;letter-spacing:1px;transform:rotate(-2deg)}
+.sub-hero-copy h1{margin:0 0 9px;color:#2e6b3a;font-size:35px;line-height:1.04;letter-spacing:-2px;text-shadow:2px 2px 0 #fff}.sub-hero-copy h1 strong{color:#3f9a48}.sub-hero-copy p:not(.eyebrow){margin:0;color:#2e6b3a;font-size:13px;font-weight:700;line-height:1.48}
+.realtime-hero .guide-orb,.mypage-hero .guide-orb{z-index:2;border:3px solid #2e6b3a;background:#ff8a1e;box-shadow:5px 5px 0 #3f9a48;transform:rotate(8deg)}
+.realtime-hero .guide-orb i,.mypage-hero .guide-orb i{color:#fff8cf}
+@media(max-width:520px){.realtime-hero,.mypage-hero{min-height:245px}.sub-hero-copy h1{font-size:31px}.sub-hero-copy p:not(.eyebrow){max-width:230px}.realtime-hero .guide-orb,.mypage-hero .guide-orb{right:21px}}
