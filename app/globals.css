@@ -193,3 +193,8 @@ button{cursor:pointer}
 .hero-sticker{display:inline-block;margin-top:13px;padding:6px 9px;border:2px solid #183d88;border-radius:999px;background:#78e6ff;color:#183d88;font-size:10px;font-weight:900;transform:rotate(-4deg);box-shadow:3px 3px 0 #183d88}
 .tangerine-float{right:7px;bottom:-33px;width:184px}
 @media(max-width:520px){.planner-hero{min-height:272px}.planner-hero .hero-copy h1{font-size:34px}.planner-hero .hero-copy p:not(.eyebrow){max-width:205px}.tangerine-float{width:164px;right:-12px;bottom:-25px}.hero-sticker{margin-top:10px}}
+
+.topbar-minimal{height:68px;justify-content:flex-end}
+.login-pill,.profile-chip{border:2px solid #183d88;border-radius:999px;background:#f43177;color:#fff;min-height:39px;padding:0 15px;font-size:13px;font-weight:900;letter-spacing:-.3px;box-shadow:3px 3px 0 #183d88;transition:transform .15s,box-shadow .15s}
+.login-pill:hover,.profile-chip:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 #183d88}
+.login-pill span,.profile-chip span{margin-left:6px;color:#fff43b}

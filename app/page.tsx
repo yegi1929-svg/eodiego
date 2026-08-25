@@ -26,12 +26,11 @@ export default function Home() {
   if (signup) return <Signup onBack={() => setSignup(false)} onSubmit={login} />;
 
   return <main className="app-shell">
-    <header className="topbar">
-      <button className="logo" onClick={() => setTab("planner")} aria-label="어디GO 홈"><img src="/eodiego-logo.png" alt="어디GO!" /></button>
-      <div className="header-actions"><span className="jeju-pill"><i /> 제주 실시간</span>{member ? <button className="profile-chip" onClick={() => setTab("mypage")}>예지님</button> : <button className="login-link" onClick={() => setDialog("login")}>로그인</button>}</div>
+    <header className="topbar topbar-minimal">
+      <div className="header-actions">{member ? <button className="profile-chip" onClick={() => setTab("mypage")}>예지님 <span>✦</span></button> : <button className="login-pill" onClick={() => setDialog("login")}>로그인 <span>→</span></button>}</div>
     </header>
     <section className={tab === "planner" ? "welcome-band planner-hero" : "welcome-band"}>
-      <div className={tab === "planner" ? "hero-copy" : undefined}>{tab === "planner" ? <><p className="eyebrow">AI PLANNER MODE</p><h1>귤이가 짜주는<br /><strong>제주 동선</strong></h1><p>날짜 · 지역 · 예산만 고르면<br />내 취향대로 코스를 쓱 만들어드려요.</p><span className="hero-sticker">슝! 코스 생성</span></> : <><p className="eyebrow">SMART JEJU TRIP</p><h1>오늘 제주, <strong>어디GO?</strong></h1><p>취향에 맞는 동선부터 지금 한적한 장소까지<br />여행의 망설임을 가볍게 덜어드릴게요.</p></>}</div>
+      <div className={tab === "planner" ? "hero-copy" : undefined}>{tab === "planner" ? <><p className="eyebrow">JEJU TRIP EDITION</p><h1>귤이가 짜주는<br /><strong>제주 동선</strong></h1><p>날짜 · 지역 · 예산만 고르면<br />내 취향대로 코스를 쓱 만들어드려요.</p><span className="hero-sticker">슝! 코스 생성</span></> : <><p className="eyebrow">JEJU TRIP</p><h1>오늘 제주, <strong>어디GO?</strong></h1><p>취향에 맞는 동선부터 지금 한적한 장소까지<br />여행의 망설임을 가볍게 덜어드릴게요.</p></>}</div>
       {tab === "planner" ? <div className="tangerine-float" aria-hidden="true"><img src="/planner-tangerine.png" alt="" /></div> : <div className="guide-orb" aria-label="여행 가이드"><span>🗺️</span><i>✦</i></div>}
     </section>
     <section className="content-area">
@@ -40,8 +39,8 @@ export default function Home() {
       {tab === "mypage" && <MyPage member={member} open={openStat} setOpen={setOpenStat} onLogin={() => setDialog("login")} onInvite={() => setDialog("invite")} />}
     </section>
     <nav className="tabbar" aria-label="주요 메뉴">
-      <TabButton active={tab === "planner"} icon="✦" text="AI 플래너" onClick={() => setTab("planner")} />
-      <TabButton active={tab === "realtime"} icon="◌" text="실시간 추천" onClick={() => setTab("realtime")} />
+      <TabButton active={tab === "planner"} icon="✦" text="코스 짜기" onClick={() => setTab("planner")} />
+      <TabButton active={tab === "realtime"} icon="◌" text="제주 추천" onClick={() => setTab("realtime")} />
       <TabButton active={tab === "mypage"} icon="⌂" text="마이페이지" onClick={() => setTab("mypage")} />
     </nav>
     {dialog === "login" && <Login onClose={() => setDialog(null)} onLogin={login} onSignup={() => { setDialog(null); setSignup(true); }} />}
@@ -53,7 +52,7 @@ function TabButton({ active, icon, text, onClick }: { active: boolean; icon: str
 
 function Planner({ region, setRegion, budget, setBudget, generated, setGenerated, saved, member, onSave }: { region: string; setRegion: (v: string) => void; budget: string; setBudget: (v: string) => void; generated: boolean; setGenerated: (v: boolean) => void; saved: boolean; member: boolean; onSave: () => void }) {
   return <>
-    <SectionHead overline="AI PLANNER" title="여행 조건을 알려주세요" right="01 / 03" />
+    <SectionHead overline="TRIP PLANNER" title="여행 조건을 알려주세요" right="01 / 03" />
     <section className="planner-card">
       <label className="field-label">여행 날짜</label>
       <div className="date-row"><label><span>가는 날</span><input aria-label="가는 날" type="date" defaultValue="2026-09-12" /></label><b>→</b><label><span>오는 날</span><input aria-label="오는 날" type="date" defaultValue="2026-09-14" /></label></div>
@@ -69,7 +68,7 @@ function Planner({ region, setRegion, budget, setBudget, generated, setGenerated
 
 function Realtime({ member, onLogin }: { member: boolean; onLogin: () => void }) {
   const locks = [["지금 붐비는 지역", "성산일출봉", "평소보다 32% 혼잡해요"], ["회원 방문 기록", "연동 · 애월", "이번 달 많이 찾은 장소"], ["10분 거리 핫플", "제주공항 근처", "지금 바로 갈 수 있는 곳"]];
-  return <><SectionHead overline="LIVE RECOMMEND" title="지금 제주에서 만날 곳" right="● 8분 전 업데이트" /><section className="open-recommend"><p className="card-kicker">어제보다 한적한 곳 <span>OPEN</span></p><h3>오늘은 조금 느리게,<br />이곳은 어때요?</h3><div className="quiet-place"><div>🌿</div><p><b>사려니숲길</b><br />어제보다 <strong>24% 한적</strong>해요</p><button aria-label="사려니숲길 보기">→</button></div></section><div className="recommend-grid">{locks.map(([title, place, detail]) => <article className="recommend-card" key={title}><p className="card-kicker">{title}{member && <span>MEMBER</span>}</p><h3>{place}</h3><p>{detail}</p><div className="mock-lines"><i /><i /><i /></div>{!member && <button className="lock-layer" onClick={onLogin}><b>🔒</b><span>로그인하고 확인하기</span></button>}</article>)}</div></>;
+  return <><SectionHead overline="JEJU PICKS" title="제주에서 만날 곳" /><section className="open-recommend"><p className="card-kicker">어제보다 한적한 곳 <span>OPEN</span></p><h3>오늘은 조금 느리게,<br />이곳은 어때요?</h3><div className="quiet-place"><div>🌿</div><p><b>사려니숲길</b><br />어제보다 <strong>24% 한적</strong>해요</p><button aria-label="사려니숲길 보기">→</button></div></section><div className="recommend-grid">{locks.map(([title, place, detail]) => <article className="recommend-card" key={title}><p className="card-kicker">{title}{member && <span>MEMBER</span>}</p><h3>{place}</h3><p>{detail}</p><div className="mock-lines"><i /><i /><i /></div>{!member && <button className="lock-layer" onClick={onLogin}><b>🔒</b><span>로그인하고 확인하기</span></button>}</article>)}</div></>;
 }
 
 function MyPage({ member, open, setOpen, onLogin, onInvite }: { member: boolean; open: string | null; setOpen: (v: string | null) => void; onLogin: () => void; onInvite: () => void }) {
