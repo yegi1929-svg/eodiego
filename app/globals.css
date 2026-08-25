@@ -257,7 +257,8 @@ button{cursor:pointer}
 @media(max-width:520px){.realtime-hero,.mypage-hero{min-height:245px}.sub-hero-copy h1{font-size:31px}.sub-hero-copy p:not(.eyebrow){max-width:230px}.realtime-hero .guide-orb,.mypage-hero .guide-orb{right:21px}}
 
 /* 상단 로그인 영역부터 배너까지 이어지는 노랑·초록 배경 */
-.topbar-minimal{margin:0 -20px;padding:0 20px;background:linear-gradient(132deg,#e9f8c9 0%,#cdeca4 33%,#eaf09e 58%,#fff1ba 100%)}
-.planner-hero,.realtime-hero,.mypage-hero{margin-top:0;background:linear-gradient(132deg,#e9f8c9 0%,#cdeca4 33%,#eaf09e 58%,#fff1ba 100%)}
+.hero-surface{margin:0 -20px;overflow:hidden;background:linear-gradient(132deg,#e9f8c9 0%,#cdeca4 33%,#eaf09e 58%,#fff1ba 100%)}
+.topbar-minimal{margin:0;padding:0 20px;background:transparent}
+.planner-hero,.realtime-hero,.mypage-hero{margin:0;background:transparent}
 .welcome-band:after,.planner-hero:before,.realtime-hero:before,.mypage-hero:before{display:none}
-@media(min-width:769px){.topbar-minimal{margin-left:-40px;margin-right:-40px;padding-left:60px;padding-right:60px}}
+@media(min-width:769px){.hero-surface{margin-left:-40px;margin-right:-40px}.topbar-minimal{padding-left:60px;padding-right:60px}}
