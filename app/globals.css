@@ -183,3 +183,13 @@ button{cursor:pointer}
 .logo img{filter:drop-shadow(1px 2px 0 #fff)}
 @media(max-width:520px){.planner-hero{min-height:250px}.planner-hero h1{font-size:30px}.tangerine-float{width:138px;right:-6px;bottom:-10px}.planner-hero p:not(.eyebrow){max-width:235px;font-size:13px}}
 @media(prefers-reduced-motion:reduce){.tangerine-float,.tangerine-float img{animation:none}}
+
+.planner-hero{padding-top:27px;padding-bottom:28px;overflow:visible}
+.planner-hero:before{content:"";position:absolute;z-index:0;left:-14px;bottom:18px;width:102px;height:16px;border:4px solid #f43177;border-left:0;border-right:0;border-radius:50%;transform:rotate(-6deg)}
+.hero-copy{position:relative;z-index:3}
+.planner-hero .hero-copy .eyebrow{margin-bottom:11px;background:#f43177;border:2px solid #183d88;box-shadow:3px 3px 0 #183d88;font-size:9px}
+.planner-hero .hero-copy h1{margin:0 0 9px;font-size:38px;line-height:1.02;letter-spacing:-2px}
+.planner-hero .hero-copy p:not(.eyebrow){font-size:13px;line-height:1.45}
+.hero-sticker{display:inline-block;margin-top:13px;padding:6px 9px;border:2px solid #183d88;border-radius:999px;background:#78e6ff;color:#183d88;font-size:10px;font-weight:900;transform:rotate(-4deg);box-shadow:3px 3px 0 #183d88}
+.tangerine-float{right:7px;bottom:-33px;width:184px}
+@media(max-width:520px){.planner-hero{min-height:272px}.planner-hero .hero-copy h1{font-size:34px}.planner-hero .hero-copy p:not(.eyebrow){max-width:205px}.tangerine-float{width:164px;right:-12px;bottom:-25px}.hero-sticker{margin-top:10px}}

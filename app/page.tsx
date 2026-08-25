@@ -31,7 +31,7 @@ export default function Home() {
       <div className="header-actions"><span className="jeju-pill"><i /> 제주 실시간</span>{member ? <button className="profile-chip" onClick={() => setTab("mypage")}>예지님</button> : <button className="login-link" onClick={() => setDialog("login")}>로그인</button>}</div>
     </header>
     <section className={tab === "planner" ? "welcome-band planner-hero" : "welcome-band"}>
-      <div><p className="eyebrow">SMART JEJU TRIP</p><h1>오늘 제주, <strong>어디GO?</strong></h1><p>취향에 맞는 동선부터 지금 한적한 장소까지<br />여행의 망설임을 가볍게 덜어드릴게요.</p></div>
+      <div className={tab === "planner" ? "hero-copy" : undefined}>{tab === "planner" ? <><p className="eyebrow">AI PLANNER MODE</p><h1>귤이가 짜주는<br /><strong>제주 동선</strong></h1><p>날짜 · 지역 · 예산만 고르면<br />내 취향대로 코스를 쓱 만들어드려요.</p><span className="hero-sticker">슝! 코스 생성</span></> : <><p className="eyebrow">SMART JEJU TRIP</p><h1>오늘 제주, <strong>어디GO?</strong></h1><p>취향에 맞는 동선부터 지금 한적한 장소까지<br />여행의 망설임을 가볍게 덜어드릴게요.</p></>}</div>
       {tab === "planner" ? <div className="tangerine-float" aria-hidden="true"><img src="/planner-tangerine.png" alt="" /></div> : <div className="guide-orb" aria-label="여행 가이드"><span>🗺️</span><i>✦</i></div>}
     </section>
     <section className="content-area">
