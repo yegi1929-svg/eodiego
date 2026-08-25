@@ -27,7 +27,7 @@ export default function Home() {
 
   return <main className="app-shell">
     <header className="topbar">
-      <button className="logo" onClick={() => setTab("planner")}>어디<span>GO!</span></button>
+      <button className="logo" onClick={() => setTab("planner")} aria-label="어디GO 홈"><img src="/eodiego-logo.png" alt="어디GO!" /></button>
       <div className="header-actions"><span className="jeju-pill"><i /> 제주 실시간</span>{member ? <button className="profile-chip" onClick={() => setTab("mypage")}>예지님</button> : <button className="login-link" onClick={() => setDialog("login")}>로그인</button>}</div>
     </header>
     <section className="welcome-band">
