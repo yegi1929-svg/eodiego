@@ -262,3 +262,8 @@ button{cursor:pointer}
 .planner-hero,.realtime-hero,.mypage-hero{margin:0;background:transparent}
 .welcome-band:after,.planner-hero:before,.realtime-hero:before,.mypage-hero:before{display:none}
 @media(min-width:769px){.hero-surface{margin-left:-40px;margin-right:-40px}.topbar-minimal{padding-left:60px;padding-right:60px}}
+
+/* 완성 코스 내부 카드와 비로그인 저장 버튼의 톤 통일 */
+.day-card{border:3px solid #2e6b3a;border-radius:19px;background:#fff;box-shadow:7px 7px 0 #3f9a48}
+.save-button.login-save{border:2px solid #2e6b3a;background:#3f9a48;color:#fff;box-shadow:3px 3px 0 #2e6b3a}
+.save-button.login-save:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 #2e6b3a}
