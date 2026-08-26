@@ -25,7 +25,7 @@ export default function Home() {
   const login = (e?: FormEvent) => { e?.preventDefault(); setMember(true); setDialog(null); setSignup(false); };
 
   if (signup) return <Signup onBack={() => setSignup(false)} onSubmit={login} />;
-  if (landing) return <Landing onStart={() => setLanding(false)} onLogin={() => { setLanding(false); setDialog("login"); }} />;
+  if (landing) return <Landing onStart={() => setLanding(false)} onTab={(next) => { setTab(next); setLanding(false); }} onLogin={() => { setLanding(false); setDialog("login"); }} />;
 
   return <main className="app-shell">
     <div className="hero-surface">
@@ -52,23 +52,28 @@ export default function Home() {
   </main>;
 }
 
-function Landing({ onStart, onLogin }: { onStart: () => void; onLogin: () => void }) {
+function Landing({ onStart, onTab, onLogin }: { onStart: () => void; onTab: (tab: Tab) => void; onLogin: () => void }) {
+  const [opening, setOpening] = useState(false);
   return <main className="landing-shell">
     <header className="landing-top">
       <button className="landing-brand" onClick={onStart} aria-label="어디GO 시작하기"><span>어디</span><b>GO!</b></button>
       <button className="landing-login" onClick={onLogin}>로그인 <span>→</span></button>
     </header>
-    <section className="landing-hero">
-      <div className="landing-art" aria-hidden="true"><img src="/landing-jeju-hero.png" alt="" /><i>JEJU<br />TRIP</i><span className="landing-cloud cloud-one" /><span className="landing-cloud cloud-two" /><span className="landing-cloud cloud-three" /></div>
-      <div className="landing-copy">
-        <p className="landing-kicker">JEJU TRIP COMPANION</p>
+    <section className={opening ? "landing-hero is-opening" : "landing-hero"}>
+      <div className="landing-art" aria-hidden="true"><img src="/landing-jeju-hero.png" alt="" /></div>
+      <div className="landing-invite">
+        <p className="landing-kicker">A LITTLE INVITATION FOR YOU</p>
         <h1>오늘 제주,<br /><strong>어디GO?</strong></h1>
-        <p className="landing-description">나의 취향을 따라, 제주를 더 가볍고 즐겁게<br />둘러보는 여행 동선을 시작해보세요.</p>
-        <div className="landing-route-card"><span>🍊</span><p><b>귤 한 손, 캐리어 한 손</b><br />제주 여행을 더 가볍게</p></div>
-        <button className="landing-primary" onClick={onStart}>시작하기 <span>→</span></button>
+        <p className="landing-description">귤이가 제주 여행 초대장을<br />살포시 건넵니다.</p>
+        <div className="invite-sticker" aria-hidden="true"><img src="/landing-invitation-sticker.png" alt="" /></div>
+        <button className="landing-primary" onClick={() => setOpening(true)} disabled={opening}>{opening ? "초대장을 열었어요" : "시작하기"} <span>→</span></button>
       </div>
+      <section className="landing-letter" aria-label="제주 여행 메뉴">
+        <p>JEJU TRAVEL LETTER</p><h2>어디부터 떠나볼까요?</h2><span className="letter-line" />
+        <div className="letter-tabs"><button onClick={() => onTab("planner")}><i>✦</i><b>코스 짜기</b><small>나만의 동선 만들기</small></button><button onClick={() => onTab("realtime")}><i>◌</i><b>제주 추천</b><small>오늘 가볼 곳 찾기</small></button><button onClick={() => onTab("mypage")}><i>⌂</i><b>마이페이지</b><small>여행 기록 모아보기</small></button></div>
+      </section>
     </section>
-    <footer className="landing-foot"><span>나만의 동선 · 제주 추천 · 여행 기록</span><button onClick={onStart}>SCROLL TO START ↓</button></footer>
+    <footer className="landing-foot"><span>귤 한 손, 캐리어 한 손 · 제주를 더 가볍게</span><button onClick={onStart}>바로 둘러보기 ↓</button></footer>
   </main>;
 }
 
