@@ -1,7 +1,8 @@
 @import "tailwindcss";
+@font-face{font-family:"Cafe24 Ssurround";src:url("/fonts/Cafe24Ssurround-v2.0.woff2") format("woff2"),url("/fonts/Cafe24Ssurround-v2.0.woff") format("woff");font-style:normal;font-weight:100 900;font-display:swap}
 :root{--green:#2e6b3a;--orange:#ff8a1e;--cream:#fffaf0;--ink:#242720;--muted:#77796f;--line:#e5e4db;--soft:#f5f5ef}
 *{box-sizing:border-box}
-body{margin:0;background:#f3f4ee;color:var(--ink);font-family:Arial,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+body{margin:0;background:#f3f4ee;color:var(--ink);font-family:"Cafe24 Ssurround","Apple SD Gothic Neo","Malgun Gothic",sans-serif}
 button,input{font:inherit}
 button{cursor:pointer}
 .app-shell{min-height:100vh;max-width:760px;margin:0 auto;padding:0 20px 104px;background:var(--cream);box-shadow:0 0 60px #3e422e14;overflow:hidden}
