@@ -70,7 +70,7 @@ function Landing({ onStart, onTab, onLogin }: { onStart: () => void; onTab: (tab
       </div>
       <section className="landing-letter" aria-label="제주 여행 메뉴">
         <p>JEJU TRAVEL LETTER</p><h2>어디부터 떠나볼까요?</h2><span className="letter-line" />
-        <div className="letter-tabs"><button onClick={() => onTab("planner")}><i>✦</i><b>코스 짜기</b><small>나만의 동선 만들기</small></button><button onClick={() => onTab("realtime")}><i>◌</i><b>제주 추천</b><small>오늘 가볼 곳 찾기</small></button><button onClick={() => onTab("mypage")}><i>⌂</i><b>마이페이지</b><small>여행 기록 모아보기</small></button></div>
+        <div className="letter-tabs"><button onClick={() => onTab("planner")}><i><span className="tab-icon tab-icon-course" aria-hidden="true" /></i><b>코스 짜기</b><small>나만의 동선 만들기</small></button><button onClick={() => onTab("realtime")}><i><span className="tab-icon tab-icon-recommend" aria-hidden="true" /></i><b>제주 추천</b><small>오늘 가볼 곳 찾기</small></button><button onClick={() => onTab("mypage")}><i><span className="tab-icon tab-icon-mypage" aria-hidden="true" /></i><b>마이페이지</b><small>여행 기록 모아보기</small></button></div>
       </section>
     </section>
     <footer className="landing-foot"><span>귤 한 손, 캐리어 한 손 · 제주를 더 가볍게</span><button onClick={onStart}>바로 둘러보기 ↓</button></footer>
