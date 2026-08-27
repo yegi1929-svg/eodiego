@@ -43,9 +43,9 @@ export default function Home() {
       {tab === "mypage" && <MyPage member={member} open={openStat} setOpen={setOpenStat} onLogin={() => setDialog("login")} onInvite={() => setDialog("invite")} />}
     </section>
     <nav className="tabbar" aria-label="주요 메뉴">
-      <TabButton active={tab === "planner"} icon="✦" text="코스 짜기" onClick={() => setTab("planner")} />
-      <TabButton active={tab === "realtime"} icon="◌" text="제주 추천" onClick={() => setTab("realtime")} />
-      <TabButton active={tab === "mypage"} icon="⌂" text="마이페이지" onClick={() => setTab("mypage")} />
+      <TabButton active={tab === "planner"} icon="course" text="코스 짜기" onClick={() => setTab("planner")} />
+      <TabButton active={tab === "realtime"} icon="recommend" text="제주 추천" onClick={() => setTab("realtime")} />
+      <TabButton active={tab === "mypage"} icon="mypage" text="마이페이지" onClick={() => setTab("mypage")} />
     </nav>
     {dialog === "login" && <Login onClose={() => setDialog(null)} onLogin={login} onSignup={() => { setDialog(null); setSignup(true); }} />}
     {dialog === "invite" && <Invite onClose={() => setDialog(null)} />}
@@ -77,7 +77,7 @@ function Landing({ onStart, onTab, onLogin }: { onStart: () => void; onTab: (tab
   </main>;
 }
 
-function TabButton({ active, icon, text, onClick }: { active: boolean; icon: string; text: string; onClick: () => void }) { return <button className={active ? "tab active" : "tab"} onClick={onClick}><span>{icon}</span>{text}</button>; }
+function TabButton({ active, icon, text, onClick }: { active: boolean; icon: "course" | "recommend" | "mypage"; text: string; onClick: () => void }) { return <button className={active ? "tab active" : "tab"} onClick={onClick}><span className={`tab-icon tab-icon-${icon}`} aria-hidden="true" />{text}</button>; }
 
 function Planner({ region, setRegion, budget, setBudget, generated, setGenerated, saved, member, onSave }: { region: string; setRegion: (v: string) => void; budget: string; setBudget: (v: string) => void; generated: boolean; setGenerated: (v: boolean) => void; saved: boolean; member: boolean; onSave: () => void }) {
   return <>

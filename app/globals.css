@@ -112,9 +112,11 @@ button{cursor:pointer}
 .list-row em{margin-left:auto;color:#8d9188;font-style:normal}
 .tabbar{height:75px;position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(760px,100%);display:grid;grid-template-columns:repeat(3,1fr);background:#fffffbf5;border-top:1px solid var(--line);backdrop-filter:blur(12px);z-index:4}
 .tab{border:0;background:transparent;color:#989a91;font-size:11px;font-weight:bold;display:flex;gap:4px;flex-direction:column;align-items:center;justify-content:center}
-.tab span{font-size:17px;line-height:17px}
-.tab.active{color:var(--green)}
-.tab.active span{color:var(--orange)}
+.tab-icon{width:23px;height:23px;display:block;background:currentColor;mask-repeat:no-repeat;mask-position:center;mask-size:contain;-webkit-mask-repeat:no-repeat;-webkit-mask-position:center;-webkit-mask-size:contain}
+.tab-icon-course{mask-image:url("/icons/tab-course.svg");-webkit-mask-image:url("/icons/tab-course.svg")}
+.tab-icon-recommend{mask-image:url("/icons/tab-recommend.svg");-webkit-mask-image:url("/icons/tab-recommend.svg")}
+.tab-icon-mypage{mask-image:url("/icons/tab-mypage.svg");-webkit-mask-image:url("/icons/tab-mypage.svg")}
+.tab.active{color:#183d88}
 .modal-backdrop{position:fixed;inset:0;z-index:10;background:#171d1573;display:grid;place-items:center;padding:20px}
 .modal-card{position:relative;width:min(400px,100%);max-height:calc(100vh - 40px);overflow-y:auto;background:#fffdf8;border-radius:20px;box-shadow:0 18px 80px #0003;padding:32px 27px 26px;text-align:center}
 .modal-card .brand-mark{margin:0 auto 16px}
@@ -180,7 +182,6 @@ button{cursor:pointer}
 .section-head h2{color:#183d88}
 .tabbar{border-top:4px solid #183d88}
 .tab.active{color:#183d88}
-.tab.active span{color:#3f9a48}
 .logo img{filter:drop-shadow(1px 2px 0 #fff)}
 @media(max-width:520px){.planner-hero{min-height:250px}.planner-hero h1{font-size:30px}.tangerine-float{width:138px;right:-6px;bottom:-10px}.planner-hero p:not(.eyebrow){max-width:235px;font-size:13px}}
 @media(prefers-reduced-motion:reduce){.tangerine-float,.tangerine-float img{animation:none}}
@@ -212,7 +213,6 @@ button{cursor:pointer}
 .planner-card{border-color:#2e6b3a;box-shadow:7px 7px 0 #3f9a48}
 .planner-card .primary-button{background:#3f9a48;border-color:#2e6b3a;box-shadow:inset 0 3px #fff8,4px 4px 0 #2e6b3a}
 .section-head .eyebrow{color:#3f9a48}
-.tab.active span{color:#3f9a48}
 .login-pill,.profile-chip{background:#3f9a48}
 
 /* 모든 탭과 생성 결과에 귤 오렌지·제주 초록 테마 적용 */
