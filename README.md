@@ -1,107 +1,128 @@
-# vinext-starter
+# 어디GO
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+제주 여행을 준비하는 사용자가 취향에 맞는 여행 동선을 만들고, 제주 추천 장소와 자신의 여행 기록을 한곳에서 확인할 수 있도록 구성한 반응형 웹 프로젝트입니다.
 
-## Prerequisites
+## 서비스 바로가기
 
-- Node.js `>=22.13.0`
-- Linux with `flock`, `curl`, and GNU `timeout`
+- 배포 사이트: [https://eodiego.yegi1929.chatgpt.site/](https://eodiego.yegi1929.chatgpt.site/)
+- GitHub 저장소: [https://github.com/yegi1929-svg/eodiego](https://github.com/yegi1929-svg/eodiego)
 
-## Sites Lifecycle
+## 주요 화면과 기능
 
-The Sites lifecycle CLI runs the locked dependency install before returning this checkout. Edit the source under `app/`, then checkpoint when a coherent milestone is ready to inspect or share. The remote Sites builder runs `npm run build` against the pushed commit. Do not repeat install or build as a normal pre-checkpoint step.
+### 랜딩 페이지
 
-This starter does not use `wrangler.jsonc`.
+- 어디GO 서비스 소개
+- `코스 짜기`, `제주 추천`, `마이페이지` 바로가기
+- 공통 로그인 창 연결
 
-`install:ci` is intentionally a single, non-retrying `npm ci`. It refuses a concurrent install for the same project, consumes a matching image-seeded npm cache with `--prefer-offline` while retaining registry fallback for a missing cache object, otherwise downloads and verifies the complete vinext tarball recorded in `package-lock.json`, limits npm to one socket, and terminates a stalled install. `build` applies a short timeout. These helpers target Linux and use GNU `timeout`; they are not native macOS scripts.
+### 코스 짜기
 
-Scripts that need writable project-scoped home, npm, XDG, and temporary paths use `scripts/sites-env.sh`. The `dev` and `start` scripts honor the caller's runtime environment and keep Wrangler logs inside the checkout. The generated `.sites-runtime/` directory is disposable and ignored by Git.
+- 출발 지역과 여행 예산 선택
+- 선택 조건을 바탕으로 2박 3일 제주 여행 코스 표시
+- 로그인 여부에 따른 일정 저장 버튼 상태 처리
 
-## Included Shape
+### 제주 추천
 
-- edit site code under `app/`
-- `app/chatgpt-auth.ts` provides optional dispatch-owned ChatGPT sign-in helpers
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/index.ts` reads the D1 binding from the Cloudflare Worker environment
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
+- 오늘 방문하기 좋은 제주 장소 소개
+- 로그인 사용자에게 추가 추천 정보 제공
+- 비로그인 사용자를 로그인 창으로 안내
 
-## Workspace Auth Headers
+### 마이페이지
 
-OpenAI workspace sites can read the current user's email from
-`oai-authenticated-user-email`.
+- 비로그인 사용자를 위한 로그인 안내
+- 로그인 사용자의 여행 프로필과 기록 화면
+- 저장한 코스, 다녀온 장소, 여행 통계 메뉴 구성
 
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
+### 로그인과 회원가입
 
-Treat the full name as optional and fall back to email when it is absent:
+- 어느 화면에서든 동일한 로그인 창 제공
+- 회원가입 화면과 입력 폼 제공
+- 현재 버전에서는 화면 동작 확인을 위한 프런트엔드 상태로 구현되어 있습니다.
 
-```tsx
-import { headers } from "next/headers";
+## 디자인 특징
 
-export default async function Home() {
-  const requestHeaders = await headers();
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
+- Cafe24 써라운드 폰트 적용
+- 귤과 초록색을 중심으로 한 제주 여행 콘셉트
+- Figma 원본 SVG를 활용한 탭 아이콘
+- 모바일과 데스크톱 화면을 고려한 반응형 레이아웃
+- Open Graph 이미지와 페이지 메타데이터 적용
 
-  const displayName = fullName ?? email;
-  // ...
-}
+## 기술 스택
+
+- TypeScript
+- React 19
+- Next.js 16
+- Vinext
+- Vite 8
+- Tailwind CSS 4
+- Cloudflare Workers / D1 연동 구조
+- Drizzle ORM
+
+## 프로젝트 구조
+
+```text
+eodiego/
+├─ app/                  # 화면, 레이아웃, 전역 스타일
+├─ public/               # 이미지, 아이콘, 폰트 등 정적 파일
+├─ db/                   # D1 연결 및 Drizzle 스키마
+├─ drizzle/              # 데이터베이스 마이그레이션 파일
+├─ scripts/              # 설치·빌드 보조 스크립트
+├─ tests/                # 렌더링 결과 테스트
+├─ worker/               # Cloudflare Worker 관련 코드
+└─ package.json          # 의존성과 실행 명령
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+## 로컬 실행 방법
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+### 요구 사항
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
+- Node.js 22.13.0 이상
+- npm
+- Bash를 실행할 수 있는 Linux, WSL 또는 호환 환경
 
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
+### 설치 및 실행
 
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
+```bash
+git clone https://github.com/yegi1929-svg/eodiego.git
+cd eodiego
+npm ci
+npm run dev
+```
 
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
+개발 서버가 실행되면 터미널에 표시된 로컬 주소로 접속합니다.
 
-## Diagnostic Commands
+## 주요 명령어
 
-- `npm run install:ci`: perform the one bounded lockfile install
-- `npm run dev`: start the Vite/Vinext development server
-- `npm run build`: build the deployable Sites artifact
-- `npm run start`: start the built Vinext application
-- `npm test`: build and verify the rendered development-preview metadata
-- `npm run db:generate`: generate Drizzle migrations after schema changes
+```bash
+npm run dev          # 개발 서버 실행
+npm run build        # 배포용 빌드
+npm run start        # 빌드 결과 실행
+npm run lint         # 코드 검사
+npm test             # 빌드 및 렌더링 결과 테스트
+npm run db:generate  # Drizzle 마이그레이션 생성
+```
 
-Use build commands for targeted diagnosis after a remote failure, not as part of the normal checkpoint path.
+## 데이터베이스 연동 상태
 
-The timeout defaults can be overridden for a controlled canary with `SITES_INSTALL_TIMEOUT`, `SITES_INSTALL_KILL_AFTER`, `SITES_BUILD_TIMEOUT`, and `SITES_BUILD_KILL_AFTER`. A timeout fails the command; the helpers never retry an unchanged install or build.
+프로젝트에는 Cloudflare D1과 Drizzle ORM을 연결할 수 있는 기본 구조가 포함되어 있습니다. 다만 현재 `db/schema.ts`에는 실제 서비스 테이블이 정의되어 있지 않으며, 로그인 정보와 저장한 일정도 데이터베이스에 영구 저장되지 않습니다.
 
-## Learn More
+실제 서비스를 운영하려면 다음 작업이 필요합니다.
 
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+1. 사용자, 여행 코스, 추천 장소, 저장 목록 테이블 설계
+2. Drizzle 스키마와 마이그레이션 작성
+3. 서버 API 또는 Server Action 구현
+4. 실제 인증 시스템 연결
+5. 입력값 검증과 접근 권한 처리
+
+## 현재 구현 범위
+
+현재 저장소는 어디GO의 UI·UX와 주요 사용자 흐름을 확인할 수 있는 프런트엔드 프로토타입입니다. 로그인, 회원가입, 일정 저장 버튼은 화면에서 동작하지만 새로고침 후에도 유지되는 실제 계정 또는 데이터 저장 기능은 아직 포함하지 않습니다.
+
+## 향후 개발 항목
+
+- 실제 회원 인증과 사용자 세션 관리
+- 제주 관광 데이터 API 연동
+- 사용자 조건에 따른 여행 코스 생성
+- 일정 저장, 수정, 삭제 기능
+- 마이페이지 여행 기록과 통계 데이터 연동
+- 운영 환경용 보안 및 오류 처리
