@@ -40,3 +40,25 @@ next-env.d.ts
 /.sites-runtime/
 /outputs/
 /work/
+
+# 환경변수 / 시크릿 - 절대 커밋하지 않는다.
+# 서비스키·LLM 키는 전부 여기로만 들어온다 (A_backend_auth.md 1절,
+# B_openapi.md 1절 "하드코딩 금지").
+
+
+# 파이썬
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# A의 로컬 SQL
+*.db
+
+# run_local.sh 의 pid/로그
+.run/
+
+# 에디터/OS
+.idea/
+.vscode/
