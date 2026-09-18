@@ -14,6 +14,12 @@ const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
 const localBindingConfig = {
   main: "./worker/index.ts",
   compatibility_flags: ["nodejs_compat"],
+  // worker가 /ui/* 를 D(BFF)로 넘길 때 쓰는 주소. 배포 환경에서는 호스팅
+  // 대시보드의 환경변수로 덮어쓴다.
+  vars: {
+    BFF_BASE_URL: process.env.BFF_BASE_URL ?? "",
+    BFF_GATEWAY_TOKEN: process.env.BFF_GATEWAY_TOKEN ?? "",
+  },
   d1_databases: d1
     ? [
         {
@@ -47,6 +53,17 @@ export default defineConfig(async () => {
     server: {
       host: "0.0.0.0",
       allowedHosts: ["terminal.local"],
+      // 화면은 /ui/* 를 같은 origin으로 호출하고, dev 서버가 D(BFF)로 넘긴다.
+      // 이렇게 해야 세션 쿠키가 cross-origin CORS 제약 없이 그대로 오간다.
+      proxy: {
+        "/ui": {
+          target: process.env.BFF_BASE_URL ?? "http://127.0.0.1:8003",
+          changeOrigin: false,
+          headers: process.env.BFF_GATEWAY_TOKEN
+            ? { "x-bff-token": process.env.BFF_GATEWAY_TOKEN }
+            : undefined,
+        },
+      },
       ...(isCodexSeatbeltSandbox
         ? { watch: { useFsEvents: false, usePolling: true } }
         : {}),

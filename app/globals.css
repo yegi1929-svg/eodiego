@@ -313,3 +313,33 @@ button{cursor:pointer}
 .landing-foot{z-index:4;margin:-26px auto 0;border-radius:36px 36px 0 0;background:#fffdf7;box-shadow:0 -1px #f3e5b1}.landing-foot:before{background:#fffdf7}
 @media(max-width:600px){.landing-hero{min-height:calc(100svh - 128px);padding:35px 20px 72px}.landing-art{border-radius:0 0 47% 47% / 0 0 8% 8%}.landing-art img{object-position:60% center}.landing-invite{padding:23px 18px 22px;border-radius:31px;box-shadow:6px 7px 0 #245738}.landing-invite h1{font-size:47px}.landing-invite .landing-description{font-size:12px}.invite-sticker{width:215px;margin-top:8px}.landing-letter{width:calc(100% - 32px);padding:28px 15px 19px;border-radius:25px 25px 44px 25px;box-shadow:6px 7px 0 #245738}.landing-letter h2{font-size:23px}.letter-tabs{gap:6px}.letter-tabs button{min-height:103px;border-radius:16px;padding:8px 4px}.letter-tabs i{width:27px;height:27px;margin-bottom:5px;font-size:13px}.letter-tabs b{font-size:11px}.letter-tabs small{font-size:8px;letter-spacing:-.3px}.landing-hero.is-opening .landing-invite{transform:translateY(112px) scale(.55)}.landing-foot{margin:-16px 14px 0;min-height:60px}.landing-foot span{font-size:9px}.landing-foot button{display:none}}
 .letter-tabs .tab-icon{width:18px;height:18px;transform:none}
+
+/* --- abcd 연동으로 추가된 상태 표시 --------------------------------------- */
+.form-error{margin:10px 0 0;color:#b3401f;background:#fff1ec;border:1px solid #f0c9bb;border-radius:10px;padding:9px 11px;font-size:11px;line-height:1.5;white-space:pre-line}
+.loading-note{margin:14px 0;color:var(--muted);font-size:12px}
+.empty-note{margin:8px 0 0;color:var(--muted);font-size:12px}
+.card-detail{color:#8c9086!important;font-size:10px!important;margin:4px 0 0!important}
+.congestion-label{display:inline-block;margin-top:2px;color:#6e886b;font-size:10px}
+.congestion-high{display:inline-block;margin-top:2px;color:#b3401f;background:#ffeee7;border-radius:999px;padding:2px 7px;font-size:10px;font-weight:bold}
+.replan-button{display:block;margin-top:6px;padding:0;color:var(--green);font-size:11px;font-weight:bold;text-align:left}
+.replan-button:disabled{color:var(--muted)}
+.replan-notice{margin:10px 0 0;color:#2e6b3a;background:#eef7e8;border:1px solid #cbe3bd;border-radius:10px;padding:9px 11px;font-size:11px;line-height:1.5;white-space:pre-line}
+
+/* --- 저장 일정 상세 --------------------------------------------------------- */
+.plan-detail-card{max-height:82vh;overflow-y:auto;text-align:left}
+.detail-list{margin:14px 0 18px;display:flex;flex-direction:column;gap:12px}
+.detail-item{display:grid;grid-template-columns:44px 1fr;gap:10px;border-top:1px solid var(--line);padding-top:12px}
+.detail-item:first-child{border-top:0;padding-top:0}
+.detail-item time{color:var(--green);font-size:11px;font-weight:bold;padding-top:2px}
+.detail-item strong{display:block;font-size:13px;color:var(--ink)}
+.detail-item>div>p{margin:4px 0 0;color:#7d8277;font-size:11px;line-height:1.5}
+.detail-meta{margin:8px 0 0;display:grid;grid-template-columns:52px 1fr;gap:3px 8px}
+.detail-meta dt{color:#9a9d93;font-size:10px}
+.detail-meta dd{margin:0;color:#5d6158;font-size:10px;line-height:1.5}
+.detail-meta-missing{margin:8px 0 0;color:#a8724f;font-size:10px}
+.detail-stale{margin:10px 0 0;color:#8a6a3a;background:#fff8e8;border:1px solid #ecd9ae;border-radius:10px;padding:8px 10px;font-size:10px;line-height:1.5}
+
+/* --- 코스 결과: 뽑힌 장소의 운영시간/휴무일 ---------------------------------- */
+.route-detail{margin:5px 0 0;display:grid;grid-template-columns:28px 1fr;gap:2px 6px}
+.route-detail dt{color:#9a9d93;font-size:10px}
+.route-detail dd{margin:0;color:#5d6158;font-size:10px;line-height:1.45}
