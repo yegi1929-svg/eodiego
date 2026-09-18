@@ -1,0 +1,13 @@
+# 백엔드(PythonServer) 전용 규칙. 상위 .gitignore 를 덮어쓰지 않고 보탠다.
+
+# 파이썬 산출물
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# run_local.sh 가 만드는 pid·로그 폴더
+.run/
+
+# 상위 .gitignore 의 `.env*` 가 예시 파일까지 묻어버린다.
+# 실제 값이 든 .env 는 계속 제외하고, 빈 템플릿만 되살린다.
+!.env.example
